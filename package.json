@@ -23,8 +23,10 @@
     "url": "https://github.com/mqas1/team-profile-generator/issues"
   },
   "homepage": "https://github.com/mqas1/team-profile-generator#readme",
-  "dependencies": {
-    "inquirer": "^8.2.4",
+  "devDependencies": {
     "jest": "^29.4.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.4"
   }
 }
