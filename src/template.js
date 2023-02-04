@@ -1,3 +1,4 @@
+// A series of functions that creates the HTML for the webpage.
 const generateManager = (manager) => {
   return `<div class="card custom-card col-lg-3 col-md-9 col-12 text-white m-3">
     <div class="card-header bg-primary">
@@ -86,6 +87,9 @@ const generateTeamHTML = (teamCards) => {
   </html>`
 }
 
+// Function for accessing the user inputted data that is pushed into an array on the index.js file.
+// This array is fed into this function and looped over getting every instance of a Manager, Engineer, and Intern class and
+// generating HTML for the webpage.
 const getHTML = (data) => {
   const htmlArr = [];
 
@@ -107,4 +111,5 @@ const getHTML = (data) => {
   return generatePage;
 }
 
+// Exporting the above function for use in the index.js file.
 module.exports = getHTML;
