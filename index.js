@@ -22,6 +22,12 @@ const questions = [
     name: 'employeeName',
     when(answers) {
       return answers.role === 'Engineer' || answers.role === 'Intern';
+    },
+    validate(input) {
+      if (/\D/g.test(input)) {
+        return true;
+      }
+      throw Error('Please provide a valid name.');
     }
   },
   {
@@ -32,6 +38,12 @@ const questions = [
     name: 'employeeId',
     when(answers) {
       return answers.role === 'Engineer' || answers.role === 'Intern';
+    },
+    validate(input) {
+      if (/\d/g.test(input)) {
+        return true;
+      }
+      throw Error('Please provide a valid number.');
     }
   },
   {
@@ -42,6 +54,12 @@ const questions = [
     name: 'employeeEmail',
     when(answers) {
       return answers.role === 'Engineer' || answers.role === 'Intern';
+    },
+    validate(input) {
+      if (/[\w\W]/g.test(input)) {
+        return true;
+      }
+      throw Error('Please provide a valid email address.');
     }
   },
   {
@@ -52,6 +70,12 @@ const questions = [
     name: 'github',
     when(answers) {
       return answers.role === 'Engineer';
+    },
+    validate(input) {
+      if (/[\w\W]/g.test(input)) {
+        return true;
+      }
+      throw Error('Please provide a valid GitHub username.');
     }
   },
   {
@@ -62,6 +86,12 @@ const questions = [
     name: 'school',
     when(answers) {
       return answers.role === 'Intern';
+    },
+    validate(input) {
+      if (/\D/g.test(input)) {
+        return true;
+      }
+      throw Error('Please provide a valid school name.');
     }
   }
 ];
@@ -83,27 +113,51 @@ const addManager = () => {
     {
       type: 'input',
       message: `${generateGreeting()} What is your given name, Team Manager?`,
-      name: 'name'
+      name: 'name',
+      validate(input) {
+        if (/\D/g.test(input)) {
+          return true;
+        }
+        throw Error('Please provide a valid name.');
+      }
     },
     {
       type: 'input',
       message(answers) {
         return `${answers.name}, what is employee ID?`},
-      name: 'id'
+      name: 'id',
+      validate(input) {
+        if (/\d/g.test(input)) {
+          return true;
+        }
+        throw Error('Please provide a valid number.');
+      }
     },
     {
       type: 'input',
       message(answers) { 
         return `${answers.name}, what is your email address?`
       },
-      name: 'email'
+      name: 'email',
+      validate(input) {
+        if (/[\w\W]/g.test(input)) {
+          return true;
+        }
+        throw Error('Please provide a valid email address.');
+      }
     },
     {
       type: 'input',
       message(answers) { 
         return `${answers.name}, what is your office number?`
       },
-      name: 'officeNumber'
+      name: 'officeNumber',
+      validate(input) {
+        if (/\d/g.test(input)) {
+          return true;
+        }
+        throw Error('Please provide a valid number.');
+      }
     }
   ])
   .then(answers => {
