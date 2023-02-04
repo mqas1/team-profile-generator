@@ -8,7 +8,7 @@ const getHTML = require('./src/template');
 const teamArr = [];
 
 // question array for the second menu where the user can choose any number of
-// engineers and interns. Includes validation and input and presents certain
+// engineers and interns. Includes validation of input and presents certain
 // questions depending on user input.
 const questions = [
   {

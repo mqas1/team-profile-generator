@@ -8,7 +8,7 @@ Keeping track of one's team can be difficult for a manager. Trying to remember t
 
 This command line application was created to aid team manager's in generating a webpage granting quick access to crucial information about their team.
 
-[Video walkthrough]() of the application.
+[Video walkthrough](https://drive.google.com/file/d/1GPb3l7072G-7h6vZK7O-3C8a6_ndJGhJ/view?usp=share_link) of the application.
   
 ## Table of Contents
   
