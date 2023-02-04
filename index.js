@@ -7,6 +7,9 @@ const fs = require('fs');
 const getHTML = require('./src/template');
 const teamArr = [];
 
+// question array for the second menu where the user can choose any number of
+// engineers and interns. Includes validation and input and presents certain
+// questions depending on user input.
 const questions = [
   {
     type: 'list',
@@ -96,6 +99,7 @@ const questions = [
   }
 ];
 
+// Function for greeting the user depending on the time of day they access the program
 const generateGreeting = () => {
   let runTime = dayjs().format('HH');
 
@@ -108,6 +112,9 @@ const generateGreeting = () => {
   }
 }
 
+// The first question menu where the user inputs the manager's details
+// which are used to create a new instance of a Manager class.
+// This is then pushed into the array for team members.
 const addManager = () => {
   inquirer.prompt([
     {
@@ -168,6 +175,9 @@ const addManager = () => {
   .then(addTeamMembers)
 }
 
+// Function for adding team members. Any number of engineers and interns can be selected.
+// The program only ends when the user answers the main menu question with 'finish building my team'.
+// The user input is used to create instances of Engineer and Intern classes which are pushed into the team array.
 const addTeamMembers = () => {
   inquirer.prompt(questions).then(answers => {
     const {employeeName, employeeId, employeeEmail, role, github, school} = answers;
@@ -188,6 +198,7 @@ const addTeamMembers = () => {
   .then(writeToFile('./dist/teamProfile.html', getHTML(teamArr)));
 }
 
+// Function for accessing the file system to save the inputted data
 const writeToFile = (fileName, data) => {
   fs.writeFileSync(fileName, data, (err) => 
      err ? console.log(err) : console.log('Successfully created a HTML file!')
