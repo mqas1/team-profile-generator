@@ -124,7 +124,7 @@ const addManager = () => {
     {
       type: 'input',
       message(answers) {
-        return `${answers.name}, what is employee ID?`},
+        return `${answers.name}, what is your employee ID?`},
       name: 'id',
       validate(input) {
         if (/\d/g.test(input)) {
