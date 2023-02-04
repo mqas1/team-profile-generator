@@ -7,7 +7,7 @@ const generateManager = (manager) => {
     <div class="card-body bg-light">
       <ul class="list-group my-3">
         <li class="list-group-item">ID: ${manager.getId()}</li>
-        <li class="list-group-item">Email: <a href="mailto:">${manager.getEmail()}</a></li>
+        <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
         <li class="list-group-item">Office number: ${manager.officeNumber}</li>
       </ul> 
     </div>
@@ -23,8 +23,8 @@ const generateEngineer = (engineer) => {
     <div class="card-body bg-light">
       <ul class="list-group my-3">
         <li class="list-group-item">ID: ${engineer.getId()}</li>
-        <li class="list-group-item">Email: <a href="mailto:">${engineer.getEmail()}</a></li>
-        <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
+        <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+        <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()}" target="_blank">${engineer.getGithub()}</a></li>
       </ul> 
     </div>
   </div>`
@@ -39,7 +39,7 @@ const generateIntern = (intern) => {
     <div class="card-body bg-light">
       <ul class="list-group my-3">
         <li class="list-group-item">ID: ${intern.getId()}</li>
-        <li class="list-group-item">Email: <a href="mailto:">${intern.getEmail()}</a></li>
+        <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
         <li class="list-group-item">School: ${intern.getSchool()}</li>
       </ul> 
     </div>
@@ -86,19 +86,19 @@ const generateTeamHTML = (teamCards) => {
   </html>`
 }
 
-const getHTML = (team) => {
+const getHTML = (data) => {
   const htmlArr = [];
 
-  team.forEach(employee => {
+  data.forEach(employee => {
     if (employee.getRole() === 'Manager'){
       let managerHTML = generateManager(employee);
       htmlArr.push(managerHTML);
     } else if (employee.getRole() === 'Engineer'){
       let engineerHTML = generateEngineer(employee);
-      htmlArr.push(engineerHTML).join(' ');
+      htmlArr.push(engineerHTML);
     } else {
       let internHTML = generateIntern(employee);
-      htmlArr.push(internHTML).join(' ');
+      htmlArr.push(internHTML);
     }
   });
 
@@ -107,4 +107,4 @@ const getHTML = (team) => {
   return generatePage;
 }
 
-module.exports = getHTML();
+module.exports = getHTML;
