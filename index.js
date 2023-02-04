@@ -10,14 +10,14 @@ const teamArr = [];
 const questions = [
   {
     type: 'list',
-    message: 'Would you like to add some more members to team?',
+    message: 'Would you like to add some more members to the team?',
     choices: ['Engineer', 'Intern', 'Finish building my team'],
     name: 'role'
   },
   {
     type: 'input',
     message(answers) {
-      return `what is your ${answers.role}'s name?`
+      return `what is your ${answers.role}'s given name?`
     },
     name: 'employeeName',
     when(answers) {
@@ -82,7 +82,7 @@ const addManager = () => {
   inquirer.prompt([
     {
       type: 'input',
-      message: `${generateGreeting()} What is your name, Team Manager?`,
+      message: `${generateGreeting()} What is your given name, Team Manager?`,
       name: 'name'
     },
     {
@@ -127,10 +127,17 @@ const addTeamMembers = () => {
       teamArr.push(intern);
       addTeamMembers();
     } else {
+      console.log(`\nYou have successfully built your team profile!\nCheck it out in the dist folder!`);
       return teamArr;
     }
-  });
-  console.log(teamArr);
+  })
+  .then(writeToFile('./dist/teamProfile.html', getHTML(teamArr)));
+}
+
+const writeToFile = (fileName, data) => {
+  fs.writeFileSync(fileName, data, (err) => 
+     err ? console.log(err) : console.log('Successfully created a HTML file!')
+  );
 }
 
 const init = () => {
